@@ -81,6 +81,15 @@
 
             return this.fetch.call(this, options);
         },
+        fetchOffset: function(options) {
+            options = options || {};
+            options.offset = options.offset || this.meta.offset;
+
+            this.filters.limit = this.meta.limit;
+            this.filters.offset = options.offset;
+
+            return this.fetch.call(this, options);
+        },
         _getQueryString: function() {
             if (!this.filters)
                 return '';
